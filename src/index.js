@@ -24,11 +24,22 @@ io.on("connection", (socket) => {
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
 
+  //for socket length
+  // io.in(roomId)
+  //   .allSockets()
+  //   .then((res) => {
+  //     console.log(res.size);
+  //   });
+
   // Listen for new messages
   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
     newMes(data);
   });
+  // socket.on("userCount", (data) => {
+  //   io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+  //   newMes(data);
+  // });
 
   // Leave the room if the user closes the socket
   socket.on("disconnect", () => {
