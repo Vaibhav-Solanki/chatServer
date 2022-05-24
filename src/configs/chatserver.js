@@ -27,7 +27,7 @@ module.exports = (server) => {
   });
 
   //save msg on db
-  const model = require("../model/chats");
+  const model = require("../model/chat");
   const newMes = async (data) => {
     try {
       var room = await model.findOne({ room: data.roomId });
