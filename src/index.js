@@ -14,6 +14,8 @@ chatServer(server);
 //Routes
 const mainRoute = require("./routes/chat");
 app.use(mainRoute);
+const search = require("./routes/search");
+app.use("/search", search);
 
 //database connect
 const PORT = process.env.PORT || 4000;
